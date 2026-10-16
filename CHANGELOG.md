@@ -17,3 +17,9 @@ Limitations: rules remain line-oriented heuristics. They can miss aliases, indir
 - Updated JSON report version and analysis description.
 
 Limitations: this remains a line-oriented heuristic scanner, not a parser, data-flow engine, formal audit, or privacy proof. Inline comments, complex syntax, aliases, and indirect flows can still cause false positives or misses.
+
+## Readability update
+
+- Replaced unavailable named font dependencies with system font stacks; no external font requests were added.
+- Increased small interface text sizes and improved contrast for supporting copy, scan findings, code snippets, and documentation views.
+- Added visible keyboard-focus outlines for interactive controls.
