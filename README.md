@@ -45,3 +45,17 @@ Source text is processed in the current browser tab. The app has no backend and 
 - Zcash address and value-pool privacy documentation: https://zcash.readthedocs.io/en/latest/rtd_pages/addresses.html
 - Zcash light-client support and threat-model pointers: https://zcash.readthedocs.io/en/master/rtd_pages/lightclient_support.html
 - Zcash Android Wallet SDK (experimental; review its current warnings and threat model): https://github.com/zcash/zcash-android-wallet-sdk
+
+## Run the scanner tests
+
+Node.js 18+ is recommended. From this directory run:
+
+```bash
+npm test
+```
+
+The tests cover representative risky code, a clean-code negative case, comment suppression, and two known self-scan false-positive patterns. Passing these tests does not establish comprehensive detection accuracy.
+
+## Vercel deployment
+
+This repository includes `vercel.json` with baseline security headers. Deploy the folder as a static site. After deployment, inspect response headers and test the scanner in the hosted browser. The Content Security Policy intentionally disallows third-party connections; if the app later adds a required external service, review and narrow the policy rather than broadly relaxing it.
