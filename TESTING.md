@@ -12,3 +12,8 @@
 - [ ] On deployed site, confirm HTTPS and expected security headers.
 
 These are manual acceptance checks, not a comprehensive security test suite.
+
+
+## Automated rule tests
+
+Run `npm test` with Node.js 18 or later. The suite currently includes 12 tests across positive detections, benign negative cases, comment suppression, and known scanner-self-match cases. Treat this as a regression baseline, not a coverage or accuracy guarantee.

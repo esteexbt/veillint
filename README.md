@@ -14,7 +14,7 @@ Then open `http://localhost:8000`.
 
 ## Current features
 
-- Scan pasted source/configuration text for eight classes of potential privacy/security risks.
+- Scan pasted source/configuration text for eleven classes of potential privacy/security risks.
 - Upload a supported text source file; it is read in the browser and is not uploaded.
 - Findings include severity, matched line, context, explanation, and a suggested review action.
 - Export a JSON report.
@@ -33,12 +33,11 @@ Source text is processed in the current browser tab. The app has no backend and 
 
 ## Suggested next engineering steps
 
-1. Convert heuristics into tested rules with positive and negative fixtures.
-2. Add multi-file project scanning and dependency/config review.
-3. Introduce a parser-backed AST analysis for JavaScript/TypeScript and Rust instead of relying only on regexes.
-4. Add explicit threat-model profiles (wallet, merchant, payment processor, light-client app).
-5. Build a documented Zcash testnet fixture and verify the transaction properties against a real supported SDK before making any on-chain claims.
-6. Have Zcash/privacy engineers review every rule and the tool's threat model.
+1. Add multi-file project scanning and dependency/config review.
+2. Introduce parser-backed AST analysis for JavaScript/TypeScript and Rust instead of relying only on regexes.
+3. Add explicit threat-model profiles (wallet, merchant, payment processor, light-client app).
+4. Build a documented Zcash testnet fixture and verify transaction properties against a real supported SDK before making any on-chain claims.
+5. Have Zcash/privacy engineers review every rule and the tool's threat model.
 
 ## References
 
@@ -54,7 +53,7 @@ Node.js 18+ is recommended. From this directory run:
 npm test
 ```
 
-The tests cover representative risky code, a clean-code negative case, comment suppression, and two known self-scan false-positive patterns. Passing these tests does not establish comprehensive detection accuracy.
+The automated tests cover representative risky code, benign negative cases, comment suppression, and known self-scan false-positive patterns. Passing these tests does not establish comprehensive detection accuracy.
 
 ## Vercel deployment
 

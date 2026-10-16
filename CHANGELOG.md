@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 — 2026-10-16
+
+- Added heuristics for seed material written to browser storage, transaction data passed to error-reporting tools, and payment identifiers included in URLs.
+- Expanded automated tests from six to twelve, including negative tests for benign browser storage, ordinary error reporting, and non-payment URL parameters.
+- Updated the visible rule count and report metadata.
+
+Limitations: rules remain line-oriented heuristics. They can miss aliases, indirect flows, multi-line calls, and other forms of sensitive data flow; findings are review prompts, not confirmed vulnerabilities.
+
 ## 0.2.0 — 2026-10-16
 
 - Extracted heuristic rules into `scanner-core.js` so the detection logic can be tested independently.

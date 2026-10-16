@@ -29,3 +29,28 @@ test('does not report the built-in checklist definition as a configured endpoint
   const source = `const checklist=[['Network metadata','Review RPC/lightwalletd trust, IP exposure, timing, retries, and broadcast behavior.']];`;
   assert.deepEqual(scanSource(source).map(f => f.id), []);
 });
+
+
+test('detects a seed phrase written to persistent browser storage', () => {
+  assert.ok(ids("localStorage.setItem('walletSeed', seedPhrase);").includes('secret-browser-storage'));
+});
+
+test('detects transaction details passed to error reporting', () => {
+  assert.ok(ids("Sentry.captureException(error, { extra: { recipient, txid } });").includes('sensitive-error-report'));
+});
+
+test('detects transaction data added to a URL', () => {
+  assert.ok(ids("const url = new URLSearchParams({ recipient, amount });").includes('sensitive-url'));
+});
+
+test('does not flag browser storage used for harmless preferences', () => {
+  assert.ok(!ids("localStorage.setItem('theme', 'dark');").includes('secret-browser-storage'));
+});
+
+test('does not flag ordinary error reporting without wallet data', () => {
+  assert.ok(!ids("Sentry.captureException(error);").includes('sensitive-error-report'));
+});
+
+test('does not flag a normal URL parameter unrelated to payments', () => {
+  assert.ok(!ids("const url = new URLSearchParams({ theme: 'dark', language: 'en' });").includes('sensitive-url'));
+});
